@@ -7,6 +7,41 @@
     <title>Git Me A Drink!</title>
 </head>
 <body>
+    <header>
+<h1>
+    Git me a Drink!
+</h1>
+<p>
+    Select ingredients you have available below and get cocktail recipes!
+</p>
+    </header>
+ <main> <!--should go into the index.html document so it's the only thing the user sees - but I think the html is supposed to be all-dynamic - we can have the following dynamically added with the "onload" method though if needed - should double check acceptance criteria anyway-->
+     <div>
+        <form>
+            <label>Select alcoholic beverages you have on hand</label>
+            <select>
+                <option>
+                    Vodka
+                </option>
+                <option>
+                    Whiskey
+                </option>
+                <option>
+                    Gin
+                </option>
+            </select>
+            <input type="submit">
+        </form>
+     </div>
+     <div> <!--This div should be dynamically added via DOM-manipulation in js once someone clicks ``submit'' after they've entered their ingrediments-->
+         <h2>Here's a list of recipes for cocktails you can make with what you have available!</h2>
+         <ul> <!--begin list dynamically populated with recipes-->
+             <li> <!--a recipe goes here-->
+
+             </li>
+         </ul>
+     </div>
+ </main>
     
 </body>
 </html>
