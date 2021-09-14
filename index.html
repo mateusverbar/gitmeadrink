@@ -5,20 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git Me A Drink!</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <header>
+    <header class="meta-header"> <!--So we want this to have a CSS class with centered text and fun font in its content and want it to be mobile responsive. We don't have to worry about buttons here since this is static and will show up even after someone makes selections and such-->
 <h1>
     Git me a Drink!
 </h1>
 <p>
-    Select ingredients you have available below and get cocktail recipes!
+    Select ingredients you have available below and get cocktail recipes without having to go shop for anything!
 </p>
     </header>
- <main> <!--should go into the index.html document so it's the only thing the user sees - but I think the html is supposed to be all-dynamic - we can have the following dynamically added with the "onload" method though if needed - should double check acceptance criteria anyway-->
+ <main> <!--We need this to have a CSS class with centered text and fun font in its content and what it to be mobile responsive. We do need to worry about buttons and dropdowns and such, I imagine this is where columns come in - god save me from trying to figure that out with CSS-->
      <div>
         <form>
-            <label>Select alcoholic beverages you have on hand</label>
+            <label>Select alcoholic beverages you have available!</label>
             <select>
                 <option>
                     Vodka
@@ -28,6 +29,15 @@
                 </option>
                 <option>
                     Gin
+                </option>
+                <option>
+                    Rum
+                </option>
+                <option>
+                    Moonshine
+                </option>
+                <option>
+                    Everclear <!--just kidding-->
                 </option>
             </select>
             <input type="submit">
@@ -40,7 +50,7 @@
 
              </li>
          </ul>
-     </div>
+     </div> <!--When we make this html dynamic with js, we can comment this html code block out, but for now I'm leaving it in as I work on the CSS, just an FYI-->
  </main>
     
 </body>

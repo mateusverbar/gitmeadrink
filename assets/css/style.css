@@ -1,0 +1,19 @@
+.meta-header {
+    display: flex;
+    background-color:maroon;
+    color:gold;
+    border-radius:25px;
+    font-family:Arial, Helvetica, sans-serif;
+    align-items:center;
+    display: inline-block;
+    justify-content:center;
+    width: auto;
+    margin: 10px;
+    padding: 30px;
+}
+
+.meta-header h1 {
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+}
