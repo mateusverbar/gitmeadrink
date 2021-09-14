@@ -1,23 +1,85 @@
+:root {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color:gold;
+}
+
 .meta-header {
-    display: flex;
     background-color:maroon;
+    display:flex;
+    flex-direction:column;
+    flex-wrap: wrap;
     color:gold;
     border-radius:25px;
-    font-family:Arial, Helvetica, sans-serif;
     align-items:center;
-    display: inline-block;
-    justify-content:center;
-    width: auto;
     margin: 10px;
     padding: 30px;
 }
 
-.meta-header h1 {
-    margin: 10px;
-    padding: 20px;
-    font-size: 30px;
+.alcohol-type {
+    color: gold;
+    background-color:maroon;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    border-radius:25px;
+    align-items:center;
+    justify-content:center;
+    margin:10px;
+    padding:10px;
 }
 
-.page-background-color {
+.alcohol-type select {
+    margin:15px;
+    border-radius:25px;
+    border:none;
     background-color:gold;
+    color:maroon;
+    font-weight:bold;
 }
+
+.alcohol-type select:hover {
+    background-color:plum;
+}
+
+.alcohol-type input {
+    border-radius:25px;
+    border:none;
+    background-color:gold;
+    color:maroon;
+    font-weight:bold;
+}
+
+.alcohol-type input:hover {
+    background-color:plum;
+}
+
+.recipe-list {
+    color: gold;
+    background-color:maroon;
+    display:flex;
+    flex-direction:column;
+    border-radius:25px;
+    align-items:center;
+    margin:10px;
+    padding: 10px;
+}
+
+.recipes {
+    list-style-type:none;
+    padding:10px;
+}
+
+.recipes li {
+    padding:10px;
+    margin:10px;
+    background-color:gold;
+    color:maroon;
+    border-radius:25px;
+}
+
+/*.recipe-list {
+    
+    margin: 0;
+    padding: 0px 0px 10px 0px;
+    display:inline-block;
+}*/
