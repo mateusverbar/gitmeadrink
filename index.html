@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git Me A Drink!</title>
+    <!-- add bootstrap -->
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -13,7 +14,7 @@
     Git me a Drink!
 </h1>
 <p>
-    Select ingredients you have available below and get cocktail recipes without having to go shop for anything!
+    Select the ingredients you have available below and get cocktail recipes without having to go shop for anything!
 </p>
     </header>
  <main> <!--We need this to have a CSS class with centered text and fun font in its content and what it to be mobile responsive. We do need to worry about buttons and dropdowns and such, I imagine this is where columns come in - god save me from trying to figure that out with CSS-->
@@ -34,7 +35,7 @@
                     Rum
                 </option>
                 <option>
-                    Moonshine
+                    Tequila
                 </option>
                 <option>
                     Everclear <!--just kidding-->
@@ -47,7 +48,7 @@
         <h3>Recipes for cocktails you can make with what you have!</h3>
      <div> <!--This div should be dynamically added via DOM-manipulation in js once someone clicks ``submit'' after they've entered their ingrediments-->
          
-         <ul class="recipes"> <!--begin list dynamically populated with recipes-->
+         <ul class="recipes"> <!--begin list dynamically populated with recipes; recipes found in the api should print here-->
              <li> <!--a recipe goes here-->
                     test item: </br>
                     1. add some lorem </br>
@@ -63,6 +64,7 @@
      </div> <!--When we make this html dynamic with js, we can comment this html code block out, but for now I'm leaving it in as I work on the CSS, just an FYI-->
     </div>
  </main>
-    
+ <!-- add jQuery -->
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
