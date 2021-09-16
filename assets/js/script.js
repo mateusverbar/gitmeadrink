@@ -6,9 +6,10 @@ fetch(
     })
     .then(function(ingredientResponse) {
       console.log(ingredientResponse);
+      // for (let i = 0; i < ingredientResponse.drinks.length; i++) 
       const drinkId = ingredientResponse.drinks[0].idDrink
       console.log(drinkId);
-      return fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007");
+      return fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId);
     })
     .then(function(drinkDetails) {
       return drinkDetails.json();
