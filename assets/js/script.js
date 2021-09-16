@@ -1,12 +1,12 @@
 fetch(
     'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin'
   )
-    .then(function(ingredientResponse) {
-      return ingredientResponse.json();
+    .then(function(response) {
+      return response.json();
     })
     .then(function(ingredientResponse) {
       console.log(ingredientResponse);
-      const drinkId = ingredientResponse.drinks[0].idDrink
+      const drinkId = ingredientResponse.drinks[1].idDrink
       console.log(drinkId);
       return fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007");
     })
