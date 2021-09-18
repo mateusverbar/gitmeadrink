@@ -1,6 +1,21 @@
 :root {
     font-family:Arial, Helvetica, sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
     background-color:gold;
+}
+
+h3 {
+    margin:0px 15px 0px 0px;
+}
+
+.list-header{
+    padding:0px 0px 15px 0px;
 }
 
 .meta-header {
@@ -29,7 +44,7 @@
 }
 
 .alcohol-type select {
-    margin:15px;
+    padding:4px;
     border-radius:25px;
     border:none;
     background-color:gold;
@@ -38,10 +53,11 @@
 }
 
 .alcohol-type select:hover {
-    background-color:plum;
+    background-color:white;
 }
 
 .alcohol-type input {
+    margin:15px;
     border-radius:25px;
     border:none;
     background-color:gold;
@@ -50,7 +66,7 @@
 }
 
 .alcohol-type input:hover {
-    background-color:plum;
+    background-color:white;
 }
 
 .recipe-list {
@@ -64,18 +80,48 @@
     padding: 10px;
 }
 
-.recipes {
-    list-style-type:none;
-    padding:10px;
-}
+  /*Just flexbox - no columns*/
 
-.recipes li {
-    padding:10px;
+  .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 30px;
+      text-align: center;
+  }
+
+  .flex-item {
+    padding: 10px;
+    flex: 20%;
+    padding:15px;
     margin:10px;
     background-color:gold;
     color:maroon;
     border-radius:25px;
-}
+  }
+
+  .flex-item h4 {
+    font-weight:bold;
+  }
+
+  .flex-item img {
+      width:100%;
+      height:auto;
+      border-radius:25px;
+  }
+
+  /* Responsive layout - makes a one column-layout instead of a two-column layout */
+@media (max-width: 800px) {
+     .flex-item {
+      flex: 33%;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .flex-item {
+     flex: 100%;
+   }
+ }
+
 
 /*.recipe-list {
     

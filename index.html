@@ -16,7 +16,7 @@
     Git me a Drink!
 </h1>
 <p>
-    Select select your favorite alchohol below and get a random cocktail recipe! You deserve it!
+    Select your favorite alchohol below and get a random cocktail recipe! You deserve it!
 </p>
     </header>
  <main> <!--We need this to have a CSS class with centered text and fun font in its content and what it to be mobile responsive. We do need to worry about buttons and dropdowns and such, I imagine this is where columns come in - god save me from trying to figure that out with CSS-->
@@ -41,23 +41,23 @@
                     Tequila
                 </option>
                 <option>
-                    Burbon<!--Everclear just kidding-->
+                    Bourbon<!--Everclear just kidding-->
                 </option>
             </select>
             <input type="submit">
         </form>
      </div>
      <div class="recipe-list">
-        <h3>Try These Recipes with: <span id="recipe-name"></span>!</h3>
-     <div> <!--This div should be dynamically added via DOM-manipulation in js once someone clicks ``submit'' after they've entered their ingrediments-->
-         
-         <ul class="recipes"> <!--begin list dynamically populated with recipes; recipes found in the api should print here-->
-             <li> 
-                 <!-- list of thumbnail pictures -->
-             </li>
-         </ul>
-     </div> <!--When we make this html dynamic with js, we can comment this html code block out, but for now I'm leaving it in as I work on the CSS, just an FYI-->
-    </div>
+        <h3 class="list-header">Try These Recipes with: <span id="recipe-name"></span>!</h3>
+        <div class="flex-container"> <!--20 flex item divs go here dynamically-->
+
+            <div class="flex-item">   <!--Template for dynamically added html-->
+                <span><h4>Martini</h4></span> 
+                <img id="drink-id" name="drink-name" src="https://cdn.britannica.com/39/7139-050-A88818BB/Himalayan-chocolate-point.jpg">
+            </div>
+
+        </div>
+        </div>
  </main>
     <!-- add jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
