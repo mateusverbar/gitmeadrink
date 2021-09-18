@@ -23,7 +23,7 @@
      <div>
         <form class="alcohol-type">
             <label><h3>Select alcoholic beverages you have available!</h3></label>
-            <select class="alcohol-selection">
+            <select class="alcohol-type">
                 <option hidden disabled selected value>Select Your Favorite</option>
                 <option>
                     Vodka
@@ -41,19 +41,21 @@
                     Tequila
                 </option>
                 <option>
-                    Bourbon<!--Everclear just kidding-->
+                    Bourbon
                 </option>
             </select>
             <input type="submit">
         </form>
      </div>
-     <div class="recipe-list">
+     <div class="drink-list">
         <h3 class="list-header">Try These Recipes with: <span id="recipe-name"></span>!</h3>
+        <button type="button" class="alcohol-type">Refresh List</button>
+        
         <div class="flex-container"> <!--20 flex item divs go here dynamically-->
 
             <div class="flex-item">   <!--Template for dynamically added html-->
                 <span><h4>Martini</h4></span> 
-                <img id="drink-id" name="drink-name" src="https://cdn.britannica.com/39/7139-050-A88818BB/Himalayan-chocolate-point.jpg">
+                <img class="drink-id" name="drink-name" src="https://cdn.britannica.com/39/7139-050-A88818BB/Himalayan-chocolate-point.jpg">
             </div>
 
         </div>
