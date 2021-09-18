@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git Me A Drink!</title>
     <!-- add bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -14,14 +16,15 @@
     Git me a Drink!
 </h1>
 <p>
-    Select the ingredients you have available below and get a cocktail recipe! You deserve it!
+    Select select your favorite alchohol below and get a random cocktail recipe! You deserve it!
 </p>
     </header>
  <main> <!--We need this to have a CSS class with centered text and fun font in its content and what it to be mobile responsive. We do need to worry about buttons and dropdowns and such, I imagine this is where columns come in - god save me from trying to figure that out with CSS-->
      <div>
         <form class="alcohol-type">
             <label><h3>Select alcoholic beverages you have available!</h3></label>
-            <select>
+            <select class="alcohol-selection">
+                <option hidden disabled selected value>Select Your Favorite</option>
                 <option>
                     Vodka
                 </option>
@@ -38,33 +41,28 @@
                     Tequila
                 </option>
                 <option>
-                    Everclear <!--just kidding-->
+                    Burbon<!--Everclear just kidding-->
                 </option>
             </select>
             <input type="submit">
         </form>
      </div>
      <div class="recipe-list">
-        <h3>Recipes for cocktails you can make with what you have!</h3>
+        <h3>Try These Recipes with: <span id="recipe-name"></span>!</h3>
      <div> <!--This div should be dynamically added via DOM-manipulation in js once someone clicks ``submit'' after they've entered their ingrediments-->
          
          <ul class="recipes"> <!--begin list dynamically populated with recipes; recipes found in the api should print here-->
-             <li> <!--a recipe goes here-->
-                    test item: </br>
-                    1. add some lorem </br>
-                    2. A dash of ipsum </br>
-                    3. shake (don't stir!) </br>
+             <li> 
+                 <!-- list of thumbnail pictures -->
              </li>
-             <li> <!--a recipe goes here-->
-                    Martini recipe</br>
-                    1. 3 parts Gin</br>
-                    2. 1 part vermouth long instructions - what happens? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum eius nobis saepe dolore sed ipsam ipsa dolorem fugit. Facere magni deserunt ipsa asperiores commodi voluptas ut, eligendi incidunt non nostrum!</br>
-            </li>
          </ul>
      </div> <!--When we make this html dynamic with js, we can comment this html code block out, but for now I'm leaving it in as I work on the CSS, just an FYI-->
     </div>
  </main>
- <!-- add jQuery -->
+    <!-- add jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
