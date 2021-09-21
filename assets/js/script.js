@@ -8,6 +8,16 @@ function shuffle(arr) {
   return arr;
 }
 
+function getMeTheIngredients(obj) {
+  for (let i = 1; i < 20; i++) {
+    if (!obj[`strIngredient${i}`]) {
+      break;
+    }
+    console.log(obj[`strIngredient${i}`]);
+    console.log(obj[`strMeasure${i}`]);
+  }
+}
+
 
 function displayDrink() {
   
@@ -65,8 +75,10 @@ function displayRecipe(drinkId) {
     return drinkDetails.json()
   })
   .then(function(drinkDetails) {
-    console.log(drinkDetails);
+    console.log(drinkDetails.drinks[0]);
     drinkName = drinkDetails.drinks[0].strDrink;
+
+    getMeTheIngredients(drinkDetails.drinks[0]);
     
     ingredient = drinkDetails.drinks[0].strIngredient1;
     console.log(ingredient);
