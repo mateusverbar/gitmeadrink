@@ -12,6 +12,8 @@ function shuffle(arr) {
 function displayDrink() {
   
   let alcoholType = document.querySelector("#alcohol-type").value;
+  let recipeNameEl = document.querySelector("#recipe-name");
+  recipeNameEl.textContent = `${alcoholType}!`;
   
   recipesEl.textContent = "";
   // variable to create li element to append to ul element
@@ -23,6 +25,7 @@ function displayDrink() {
       })
       .then(function(ingredientResponse) {
         console.log(ingredientResponse);
+
         const drinkList = ingredientResponse.drinks
         let randomDrinks = shuffle(drinkList);
         console.log(randomDrinks);
@@ -64,69 +67,28 @@ function displayRecipe(drinkId) {
   .then(function(drinkDetails) {
     console.log(drinkDetails);
     drinkName = drinkDetails.drinks[0].strDrink;
-    console.log(drinkName);
-
+    
     ingredient = drinkDetails.drinks[0].strIngredient1;
     console.log(ingredient);
 
     measurement = drinkDetails.drinks[0].strMeasure1;
     console.log(measurement);
 
-    document.querySelector(".modal-body").innerHTML=`${ingredient}:  ${measurement}`;
+    document.querySelector(".modal-title").textContent = drinkName;
+    document.querySelector(".modal-body").innerHTML=`<p>Ingredients:<p> 
+    <p>${ingredient} - ${measurement}<p>`;
 
     $("#drink-form-modal").modal("show")
 
-    //push all the ingredients into an array
-    //loop through the array to return an ingredient in the modal if not null
+    // possibly create an objects with key value pairs using the ingredient for the key and the measurement for the value
+    //push all the ingredients and measurements into an array
+    //loop through the array to return an ingredient and measurement combo if not null in the modal if not null
 
-    // modal was triggered
-  // $("#drink-form-modal").on("shown.bs.modal", function() {
-  //   $("#drink-content").trigger('focus');
-  //   document.querySelector(".modal-body").innerHTML=ingredient;
-  // clear values
-  //$("#modal-title, #modal-body").val("");
-
-  // modal was triggered
-  // $("#drink-form-modal").on("show.bs.modal", function() {
-  // //clear values 
-  // $("#modal-title, #modal-body").val("");
-  // });
-  // //modal is fully visible
-  // $("#drink-form-modal").on("shown.bs.modal", function() {
-  //   document.querySelector(".modal-body").innerHTML=ingredient;
-  // })
 
   });
 
 }
 
-    // let drinkName = drinkDetails.strDrink
-    // console.log(drinkName);
+// create a label (maybe in the header that will tell the user how many drinks the first fetch returned)
+// add functionality to the refresh button
 
-    // let modalEl = document.createElement("div");
-    // modalEl.classList.add("modal");
-    // modalEl.setAttribute("id","drinkModal");
-
-    // let modalContentEl = document.createElement("div");
-    // modalContentEl.classList.add("modal-content");
-
-
-    // modalContent.innerHTML(`${drinkDetails}`)
-
-
-
-    // post the thumbnail to page
-  // use 2nd fetch request details about selected drink
-  // random 20 thumbnails on page; add link asking user if they would like to load another random 20
-    //   return fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId);
-    // })
-    // .then(function(drinkDetails) {
-    //   return drinkDetails.json();
-    // })
-    // .then(function(drinkDetails) {
-    //   console.log(drinkDetails);
-    // ;
-// fetch to get drink id for drinks that match selected ingredient
-// fetch to take the drink id and pass back cocktail recipes
-// display the list of recipes in the DOM
-// optional clickable drink thumbnail to take them to the drink website in another webpage
