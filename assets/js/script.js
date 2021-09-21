@@ -12,7 +12,9 @@ function shuffle(arr) {
 function displayDrink() {
   
   let alcoholType = document.querySelector("#alcohol-type").value;
-  
+  let recipeNameEl = document.querySelector("#recipe-name");
+  recipeNameEl.textContent=`${alcoholType}!`;
+
   recipesEl.textContent = "";
   // variable to create li element to append to ul element
   fetch(
@@ -51,7 +53,19 @@ function displayDrink() {
           drinkDivEl.appendChild(drinkTitleEl);
           drinkDivEl.appendChild(drinkImageEl)
 
+          //create the button 
+          // <button type="button" id="refresh" class="alcohol-type">Refresh List</button>
+
+          
         }
+        // var refreshBtn = document.createElement("button");
+          
+        //   refreshBtn.setAttribute("type","button");
+        //   refreshBtn.setAttribute("id","refresh");
+        //   refreshBtn.classList.add("alcohol-type","w-100");
+        //   refreshBtn.textContent="Refresh List";
+
+        //   document.querySelector(".flex-container").appendChild(refreshBtn);
       })
 }
 
@@ -107,7 +121,7 @@ function getMetheIngredients(obj) {
   for (let i = 1; i < 20; i++) {      //Thanks Rommel for this for-loop!
     if (!obj[`strIngredient${i}`]) {
       break;
-    } else {
+      } else {
       let ingredient = obj[`strIngredient${i}`];
       let measure = obj[`strMeasure${i}`];
       let instructions = obj[`strInstructions`];
@@ -120,21 +134,31 @@ function getMetheIngredients(obj) {
 
       var ingredientListEl = document.createElement("ul");
       var ingredientListItemEl = document.createElement("li");
+      var ingredientTitle = document.createElement("h5");
+      ingredientTitle.textContent="Ingredients";
+
+      var instructionsTitle = document.createElement("h5");
+      instructionsTitle.textContent="Instructions";
       var instructionsEl = document.createElement("p");
 
       instructionsEl.innerHTML=instructions;
       
       ingredientListItemEl.innerHTML=`${ingredient}:  ${measure}`;
+
+      document.querySelector(".modal-body").appendChild(ingredientListEl);
       ingredientListEl.appendChild(ingredientListItemEl);
       
-      document.querySelector(".modal-body").appendChild(ingredientListEl);
-
       //document.querySelector(".modal-body").innerHTML=`${ingredient}:  ${measure}`;
       //document.querySelector(".modal-body").innerHTML="<h1>" + ingredient + ":</h1>";
       document.querySelector(".modal-title").textContent=drinkName;
       $("#drink-form-modal").modal("show")
       }
   }
+
+  ingredientListEl.appendChild(ingredientTitle);
+
+
+  document.querySelector(".modal-body").appendChild(instructionsTitle);
   document.querySelector(".modal-body").appendChild(instructionsEl); //This one has to be here otherwise you get the instructions printed after each list item
 };
 
