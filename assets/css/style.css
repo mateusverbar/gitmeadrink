@@ -114,6 +114,16 @@ h3 {
     border-radius:25px;
   }
 
+  .modal-content {
+      background-color:gold;
+      border-radius:25px;
+      color:maroon;
+  }
+
+  .flex-item:hover {
+      background-color:white;
+  }
+
   .flex-item h4 {
     font-weight:bold;
   }

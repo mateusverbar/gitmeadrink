@@ -30,7 +30,7 @@ function displayDrink() {
         for (let i = 0; i < randomDrinks.length; i++) {
           let drinkId = randomDrinks[i].idDrink
           let drinkName = randomDrinks[i].strDrink
-          let  drinkPicture = randomDrinks[i].strDrinkThumb
+          let drinkPicture = randomDrinks[i].strDrinkThumb
 
           let drinkDivEl = document.createElement("div")
           drinkDivEl.classList.add("flex-item");
@@ -62,19 +62,21 @@ function displayRecipe(drinkId) {
     return drinkDetails.json()
   })
   .then(function(drinkDetails) {
-    console.log(drinkDetails);
-    drinkName = drinkDetails.drinks[0].strDrink;
-    console.log(drinkName);
+    console.log(drinkDetails.drinks[0]);
 
-    ingredient = drinkDetails.drinks[0].strIngredient1;
-    console.log(ingredient);
+    //ingredients, amounts, and instructions
+    
+    getMetheIngredients(drinkDetails.drinks[0]);
 
-    measurement = drinkDetails.drinks[0].strMeasure1;
-    console.log(measurement);
+    //ingredient = drinkDetails.drinks[0].strIngredient1;
+    //console.log(ingredient);
 
-    document.querySelector(".modal-body").innerHTML=`${ingredient}:  ${measurement}`;
+    //measurement = drinkDetails.drinks[0].strMeasure1;
+    //console.log(measure);
 
-    $("#drink-form-modal").modal("show")
+    // document.querySelector(".modal-body").innerHTML=`${ingredient}:  ${measure}`;
+    // document.querySelector(".modal-title").textContent=drinkName;
+    // $("#drink-form-modal").modal("show")
 
     //push all the ingredients into an array
     //loop through the array to return an ingredient in the modal if not null
@@ -97,8 +99,30 @@ function displayRecipe(drinkId) {
   // })
 
   });
+}
+
+
+function getMetheIngredients(obj) {
+  for (let i = 1; i < 20; i++) {
+    if (!obj[`strIngredient${i}`]) {
+      break;
+    } else {
+      let ingredient = obj[`strIngredient${i}`];
+      let measure = obj[`strMeasure${i}`];
+      console.log(ingredient);
+      console.log(measure);
+
+      drinkName = obj[`strDrink`];
+      console.log(drinkName);
+      
+      document.querySelector(".modal-body").innerHTML=`${ingredient}:  ${measure}`;
+      document.querySelector(".modal-title").textContent=drinkName;
+      $("#drink-form-modal").modal("show")
 
 }
+}
+};
+
 
     // let drinkName = drinkDetails.strDrink
     // console.log(drinkName);
@@ -130,3 +154,5 @@ function displayRecipe(drinkId) {
 // fetch to take the drink id and pass back cocktail recipes
 // display the list of recipes in the DOM
 // optional clickable drink thumbnail to take them to the drink website in another webpage
+
+document.querySelector("#refresh").addEventListener("click",displayDrink);
