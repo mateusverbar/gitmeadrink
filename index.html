@@ -9,22 +9,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- Compiled and minified CSS -->
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
+    
 </head>
 <body>
-    <header class="meta-header"> <!--So we want this to have a CSS class with centered text and fun font in its content and want it to be mobile responsive. We don't have to worry about buttons here since this is static and will show up even after someone makes selections and such-->
-<h1>
-    Git me a Drink!
+    <header class="meta-header">
+<h1 class="border-bottom border-white">
+    Git Me a Drink!
 </h1>
 <p>
-    Select your favorite alchohol below and get a random cocktail recipe! You deserve it!
+    Select your favorite alcohol spirit from the list below and get a random cocktail selection! Git yourself a drink! You deserve it!
 </p>
     </header>
- <main> <!--We need this to have a CSS class with centered text and fun font in its content and what it to be mobile responsive. We do need to worry about buttons and dropdowns and such, I imagine this is where columns come in - god save me from trying to figure that out with CSS-->
+ <main> 
      <div>
         <form class="alcohol-type">
-            <label><h3>Select the type of alcohol you have available!</h3></label>
+            <label><h2>Select the type of alcohol you have available!</h2></label>
             <select onchange=displayDrink() id="alcohol-type">
                 <option hidden disabled selected value>What's Your Favorite?</option>
                 <option value="Vodka">
@@ -45,17 +44,12 @@
                 <option value="Bourbon">
                     Bourbon
                 </option>
-                <option value="Rum">
-                    Rum
-                </option>
             </select>
-            <!-- <input type="submit"> -->
         </form>
      </div>
      <div class="drink-list">
 
         <h3 class="list-header">Try These Recipes with: <span id="recipe-name"></span></h3>
-        <!-- <button type="button" class="alcohol-type">Refresh List</button> -->
         
         <div class="recipes flex-container"> <!--20 flex item divs go here dynamically-->
 
@@ -74,25 +68,14 @@
                     </button>
                 </div>
                 <div class="modal-body" id="drink-content">
-                    <ul>
-                        <h3>ingredients</h3>
-                        <li>
-
-                        </li>
-                    </ul>
-                        <h3></h3>
-                    <p>instructions</p>
-
+                 
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Compiled and minified JavaScript -->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
-    <!-- add jQuery -->
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
     <script src="./assets/js/script.js"></script>
     

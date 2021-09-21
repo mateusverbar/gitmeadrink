@@ -144,7 +144,7 @@ function getMetheIngredients(obj) {
       instructionsEl.innerHTML=instructions;
       
       // sets the li item to the ingredient and measurement for that ingredient
-      ingredientListItemEl.innerHTML=`${ingredient}:  ${measure}`;
+      ingredientListItemEl.innerHTML=`${ingredient} - ${measure}`;
       
       // then append the ingredients list to the ul element
       ingredientListEl.appendChild(ingredientListItemEl);
