@@ -8,6 +8,16 @@ function shuffle(arr) {
   return arr;
 }
 
+function getMeTheIngredients(obj) {
+  for (let i = 1; i < 20; i++) {
+    if (!obj[`strIngredient${i}`]) {
+      break;
+    }
+    console.log(obj[`strIngredient${i}`]);
+    console.log(obj[`strMeasure${i}`]);
+  }
+}
+
 
 function displayDrink() {
   
@@ -25,6 +35,7 @@ function displayDrink() {
       })
       .then(function(ingredientResponse) {
         console.log(ingredientResponse);
+
         const drinkList = ingredientResponse.drinks
         let randomDrinks = shuffle(drinkList);
         console.log(randomDrinks);
@@ -86,32 +97,18 @@ function displayRecipe(drinkId) {
     //ingredient = drinkDetails.drinks[0].strIngredient1;
     //console.log(ingredient);
 
-    //measurement = drinkDetails.drinks[0].strMeasure1;
-    //console.log(measure);
+    document.querySelector(".modal-title").textContent = drinkName;
+    document.querySelector(".modal-body").innerHTML=`<p>Ingredients:<p> 
+    <p>${ingredient} - ${measurement}<p>`;
 
     // document.querySelector(".modal-body").innerHTML=`${ingredient}:  ${measure}`;
     // document.querySelector(".modal-title").textContent=drinkName;
     // $("#drink-form-modal").modal("show")
 
-    //push all the ingredients into an array
-    //loop through the array to return an ingredient in the modal if not null
+    // possibly create an objects with key value pairs using the ingredient for the key and the measurement for the value
+    //push all the ingredients and measurements into an array
+    //loop through the array to return an ingredient and measurement combo if not null in the modal if not null
 
-    // modal was triggered
-  // $("#drink-form-modal").on("shown.bs.modal", function() {
-  //   $("#drink-content").trigger('focus');
-  //   document.querySelector(".modal-body").innerHTML=ingredient;
-  // clear values
-  //$("#modal-title, #modal-body").val("");
-
-  // modal was triggered
-  // $("#drink-form-modal").on("show.bs.modal", function() {
-  // //clear values 
-  // $("#modal-title, #modal-body").val("");
-  // });
-  // //modal is fully visible
-  // $("#drink-form-modal").on("shown.bs.modal", function() {
-  //   document.querySelector(".modal-body").innerHTML=ingredient;
-  // })
 
   });
 }
