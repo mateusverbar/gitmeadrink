@@ -45,7 +45,7 @@ function displayDrink() {
           drinkImageEl.setAttribute("alt", `${drinkName}`);
           drinkImageEl.setAttribute("src", `${drinkPicture}`);
 
-          drinkImageEl.addEventListener("click", ()=>displayRecipe(drinkId));
+          drinkDivEl.addEventListener("click", ()=>displayRecipe(drinkId));//changed drinkImgEl to drinkDivEl so if they click anywhere in the div
 
           recipesEl.appendChild(drinkDivEl)
           drinkDivEl.appendChild(drinkTitleEl);
@@ -104,7 +104,7 @@ function displayRecipe(drinkId) {
 
 
 function getMetheIngredients(obj) {
-  for (let i = 1; i < 20; i++) {
+  for (let i = 1; i < 20; i++) {      //Thanks Rommel for this for-loop!
     if (!obj[`strIngredient${i}`]) {
       break;
     } else {
