@@ -57,6 +57,7 @@ function displayDrink() {
 
 function displayRecipe(drinkId) {
   console.log(drinkId);
+  document.querySelector(".modal-body").innerHTML="";// clears out modal content on new selection
   fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
   .then(function(drinkDetails) {
     return drinkDetails.json()
