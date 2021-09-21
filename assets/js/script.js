@@ -109,19 +109,37 @@ function getMetheIngredients(obj) {
     } else {
       let ingredient = obj[`strIngredient${i}`];
       let measure = obj[`strMeasure${i}`];
+      let instructions = obj[`strInstructions`];
       console.log(ingredient);
       console.log(measure);
+      console.log(instructions);
 
       drinkName = obj[`strDrink`];
       console.log(drinkName);
+
+      var ingredientListEl = document.createElement("ul");
+      var ingredientListItemEl = document.createElement("li");
+      var instructionsEl = document.createElement("p");
+
+      instructionsEl.innerHTML=instructions;
       
-      document.querySelector(".modal-body").innerHTML=`${ingredient}:  ${measure}`;
+      ingredientListItemEl.innerHTML=`${ingredient}:  ${measure}`;
+      ingredientListEl.appendChild(ingredientListItemEl);
+      
+      document.querySelector(".modal-body").appendChild(ingredientListEl);
+
+      //document.querySelector(".modal-body").innerHTML=`${ingredient}:  ${measure}`;
+      //document.querySelector(".modal-body").innerHTML="<h1>" + ingredient + ":</h1>";
       document.querySelector(".modal-title").textContent=drinkName;
       $("#drink-form-modal").modal("show")
-
-}
-}
+      }
+  }
+  document.querySelector(".modal-body").appendChild(instructionsEl); //This one has to be here otherwise you get the instructions printed after each list item
 };
+
+
+
+
 
 
     // let drinkName = drinkDetails.strDrink
