@@ -151,6 +151,8 @@ function getMetheIngredients(obj) {
       
       // sets the drink name in the modal header
       document.querySelector(".modal-title").textContent=drinkName;
+
+      // opens the modal manually
       $("#drink-form-modal").modal("show")
       }
   }
