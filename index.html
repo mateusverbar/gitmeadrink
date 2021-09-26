@@ -19,12 +19,13 @@
 <p>
     Select your favorite alcohol spirit from the list below and get a random cocktail selection! Git yourself a drink! You deserve it!
 </p>
+<a id="saved-drinks"></a>
     </header>
  <main> 
      <div>
         <form class="alcohol-type">
             <label><h2>Select the type of alcohol you have available!</h2></label>
-            <select onchange=displayDrink() id="alcohol-type">
+            <select onchange=displayDrink() class="ms-3" id="alcohol-type">
                 <option hidden disabled selected value>What's Your Favorite?</option>
                 <option value="Vodka">
                     Vodka
@@ -63,13 +64,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="drink-form-modal"></h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"> 
+                    <button type="button" id="close-btn" class="close btn" data-bs-dismiss="modal" aria-label="Close"> 
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body" id="drink-content">
                  
                 </div>
+                <button type="button" class="btn" id="save-btn"><span class="oi oi-heart"></span>Save this Drink!</button>
             </div>
         </div>
     </div>

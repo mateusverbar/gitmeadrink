@@ -29,12 +29,11 @@ function displayDrink() {
         return ingredientResponse.json();
       })
       .then(function(ingredientResponse) {
-        console.log(ingredientResponse);
+        
         const drinkList = ingredientResponse.drinks
 
         // shuffle drinks in the array
         let randomDrinks = shuffle(drinkList);
-        console.log(randomDrinks);
 
 
         for (let i = 0; i < randomDrinks.length; i++) {
@@ -83,7 +82,6 @@ function displayDrink() {
 }
 
 function displayRecipe(drinkId) {
-  console.log(drinkId);
   
   // clears out modal content on new selection
   document.querySelector(".modal-body").innerHTML="";
@@ -94,7 +92,6 @@ function displayRecipe(drinkId) {
     return drinkDetails.json()
   })
   .then(function(drinkDetails) {
-    console.log(drinkDetails.drinks[0]);
     
     // pass the array from the response to the getMetheingredients function
     getMetheIngredients(drinkDetails.drinks[0]);
@@ -122,12 +119,22 @@ function getMetheIngredients(obj) {
       let ingredient = obj[`strIngredient${i}`];
       let measure = obj[`strMeasure${i}`];
       let instructions = obj[`strInstructions`];
-      console.log(ingredient);
-      console.log(measure);
-      console.log(instructions);
+      let image = obj[`strDrinkThumb`]
     
       drinkName = obj[`strDrink`];
-      console.log(drinkName);
+
+      let drink = [
+        saved = [{
+          savedName: drinkName,
+          picture: image,
+          ingredientList: ["test1"],
+          measureList: ["test2"],
+          instructionList: instructions
+        }]
+      ]
+      // drink.saved.measureList.push(measure)
+      // drink.saved.ingredientList.push(ingredient)
+      console.log(drink.saved);
 
       // create the li element to hold the ingredients
       var ingredientListItemEl = document.createElement("li");
@@ -155,6 +162,16 @@ function getMetheIngredients(obj) {
       // opens the modal manually
       $("#drink-form-modal").modal("show")
       }
+
+      saveDrink(drink);
+  }
+
+  function saveDrink(obj) {
+  
+    document.querySelector("#save-btn").addEventListener("click", function() {
+      localStorage.setItem("drink", JSON.stringify(obj));
+    })
+  
   }
 
   document.querySelector(".modal-body").appendChild(instructionsTitle);
