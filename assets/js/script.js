@@ -8,6 +8,17 @@ function shuffle(arr) {
   return arr;
 }
 
+function loadDrinks(obj) {
+
+  let saved = localStorage.getItem(JSON.stringify(obj.name))
+  console.log(saved);
+  if (saved) {
+    let savedEl = document.createElement("a");
+    savedEl.textContent = "Here are your saved drinks!";
+    savedEl.setAttribute("href", "./saved.html");
+    document.querySelector(".meta-header").appendChild(savedEl);
+  }
+}
 
 function displayDrink() {
   
@@ -110,6 +121,11 @@ function getMetheIngredients(obj) {
   // append the title for the ingredients to the ul element
   ingredientListEl.appendChild(ingredientTitle);
 
+  let savedDrinks = {
+    ingredientList: [],
+    measurementList: []
+  }
+
   for (let i = 1; i < 20; i++) { 
     // if the value of strIngredient is null ignore it
     if (!obj[`strIngredient${i}`]) {
@@ -117,24 +133,21 @@ function getMetheIngredients(obj) {
       } else {
       // otherwise grab the specified information
       let ingredient = obj[`strIngredient${i}`];
-      let measure = obj[`strMeasure${i}`];
-      let instructions = obj[`strInstructions`];
-      let image = obj[`strDrinkThumb`]
-    
-      drinkName = obj[`strDrink`];
+      savedDrinks.ingredientList.push(ingredient);
 
-      let drink = [
-        saved = [{
-          savedName: drinkName,
-          picture: image,
-          ingredientList: ["test1"],
-          measureList: ["test2"],
-          instructionList: instructions
-        }]
-      ]
-      // drink.saved.measureList.push(measure)
-      // drink.saved.ingredientList.push(ingredient)
-      console.log(drink.saved);
+      let measure = obj[`strMeasure${i}`];
+      savedDrinks.measurementList.push(measure);
+
+      let instructions = obj[`strInstructions`];
+      savedDrinks.instructionsList = instructions;
+
+      let image = obj[`strDrinkThumb`]
+      savedDrinks.picture = image;
+
+      drinkName = obj[`strDrink`];
+      savedDrinks.name = drinkName
+
+      console.log(savedDrinks)
 
       // create the li element to hold the ingredients
       var ingredientListItemEl = document.createElement("li");
@@ -162,19 +175,17 @@ function getMetheIngredients(obj) {
       // opens the modal manually
       $("#drink-form-modal").modal("show")
       }
-
-      saveDrink(drink);
   }
-
-  function saveDrink(obj) {
-  
-    document.querySelector("#save-btn").addEventListener("click", function() {
-      localStorage.setItem("drink", JSON.stringify(obj));
-    })
-  
-  }
-
+  saveDrink(savedDrinks);
   document.querySelector(".modal-body").appendChild(instructionsTitle);
    //This one has to be here otherwise you get the instructions printed after each list item
   document.querySelector(".modal-body").appendChild(instructionsEl);
 };
+
+function saveDrink(obj) {
+  
+  document.querySelector("#save-btn").addEventListener("click", function() {
+    localStorage.setItem(obj.name, JSON.stringify(obj));
+  })
+
+}
