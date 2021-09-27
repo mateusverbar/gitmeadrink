@@ -1,3 +1,5 @@
+let savedDrink = {
+}
 // variable to grab the recipes div
 const recipesEl = document.querySelector(".recipes");
 
@@ -6,18 +8,6 @@ function shuffle(arr) {
   arr = arr.sort(() => Math.random() - 0.5)
   arr = arr.slice(0, 20)
   return arr;
-}
-
-function loadDrinks(obj) {
-
-  let saved = localStorage.getItem(JSON.stringify(obj.name))
-  console.log(saved);
-  if (saved) {
-    let savedEl = document.createElement("a");
-    savedEl.textContent = "Here are your saved drinks!";
-    savedEl.setAttribute("href", "./saved.html");
-    document.querySelector(".meta-header").appendChild(savedEl);
-  }
 }
 
 function displayDrink() {
@@ -122,8 +112,7 @@ function getMetheIngredients(obj) {
   ingredientListEl.appendChild(ingredientTitle);
 
   let savedDrinks = {
-    ingredientList: [],
-    measurementList: []
+
   }
 
   for (let i = 1; i < 20; i++) { 
@@ -131,50 +120,53 @@ function getMetheIngredients(obj) {
     if (!obj[`strIngredient${i}`]) {
       break;
       } else {
-      // otherwise grab the specified information
-      let ingredient = obj[`strIngredient${i}`];
-      savedDrinks.ingredientList.push(ingredient);
 
-      let measure = obj[`strMeasure${i}`];
-      savedDrinks.measurementList.push(measure);
+        let drinkArr = {ingredientList: [], measurementList: []};
 
-      let instructions = obj[`strInstructions`];
-      savedDrinks.instructionsList = instructions;
+        // otherwise grab the specified information
+        let ingredient = obj[`strIngredient${i}`];
+        drinkArr.ingredientList.push(ingredient);
 
-      let image = obj[`strDrinkThumb`]
-      savedDrinks.picture = image;
+        let measure = obj[`strMeasure${i}`];
+        drinkArr.measurementList.push(measure);
 
-      drinkName = obj[`strDrink`];
-      savedDrinks.name = drinkName
+        let instructions = obj[`strInstructions`];
+        drinkArr.instructionsList = instructions;
 
-      console.log(savedDrinks)
+        let image = obj[`strDrinkThumb`]
+        drinkArr.picture = image;
 
-      // create the li element to hold the ingredients
-      var ingredientListItemEl = document.createElement("li");
+        drinkName = obj[`strDrink`];
+        drinkArr.name = drinkName;
 
-      // sets ingredient title text
-      ingredientTitle.textContent="Ingredients:";
-      
-      // creates a title element for the instructions
-      var instructionsTitle = document.createElement("h5");
-      instructionsTitle.textContent="Instructions:";
-      var instructionsEl = document.createElement("p");
+        savedDrinks.push(drinkArr);
+        
+        // create the li element to hold the ingredients
+        var ingredientListItemEl = document.createElement("li");
 
-      // sets the element html to the instructions from the response
-      instructionsEl.innerHTML=instructions;
-      
-      // sets the li item to the ingredient and measurement for that ingredient
-      ingredientListItemEl.innerHTML=`${ingredient} - ${measure}`;
-      
-      // then append the ingredients list to the ul element
-      ingredientListEl.appendChild(ingredientListItemEl);
-      
-      // sets the drink name in the modal header
-      document.querySelector(".modal-title").textContent=drinkName;
+        // sets ingredient title text
+        ingredientTitle.textContent="Ingredients:";
+        
+        // creates a title element for the instructions
+        var instructionsTitle = document.createElement("h5");
+        instructionsTitle.textContent="Instructions:";
+        var instructionsEl = document.createElement("p");
 
-      // opens the modal manually
-      $("#drink-form-modal").modal("show")
-      }
+        // sets the element html to the instructions from the response
+        instructionsEl.innerHTML=instructions;
+        
+        // sets the li item to the ingredient and measurement for that ingredient
+        ingredientListItemEl.innerHTML=`${ingredient} - ${measure}`;
+        
+        // then append the ingredients list to the ul element
+        ingredientListEl.appendChild(ingredientListItemEl);
+        
+        // sets the drink name in the modal header
+        document.querySelector(".modal-title").textContent=drinkName;
+
+        // opens the modal manually
+        $("#drink-form-modal").modal("show")
+    }
   }
   saveDrink(savedDrinks);
   document.querySelector(".modal-body").appendChild(instructionsTitle);
@@ -185,7 +177,19 @@ function getMetheIngredients(obj) {
 function saveDrink(obj) {
   
   document.querySelector("#save-btn").addEventListener("click", function() {
-    localStorage.setItem(obj.name, JSON.stringify(obj));
+    localStorage.setItem("savedDrinks", JSON.stringify(obj));
   })
-
 }
+
+function loadDrinks() {
+  if (localStorage !== null) {
+    let savedEl = document.createElement("a");
+    savedEl.textContent = "Here are your saved drinks!";
+    savedEl.setAttribute("href", "./saved.html");
+    document.querySelector(".meta-header").appendChild(savedEl);
+  } else {
+    savedEl.textContent = "";
+  }
+}
+
+loadDrinks();
