@@ -37,6 +37,8 @@ function displayDrink() {
 
 function displayRecipe(obj) {
 
+    // clear out modal content on new selection
+    document.querySelector(".modal-body").innerHTML="";
     // create ul element to hold ingredient list
     let ingredientListEl = document.createElement("ul");
     let ingredientTitle = document.createElement("h5");
