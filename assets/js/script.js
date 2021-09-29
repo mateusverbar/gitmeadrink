@@ -100,8 +100,21 @@ function displayRecipe(drinkId) {
   });
 }
 
+// let savedDrinkList = [];
+
+let savedDrink = {
+  ingredientList: [],
+  measurementList: []
+};
 
 function getMetheIngredients(obj) {
+
+  // savedDrinkList = [];
+
+  savedDrink = {
+    ingredientList: [],
+    measurementList: []
+  };
 
   var ingredientListEl = document.createElement("ul");
   var ingredientTitle = document.createElement("h5");
@@ -120,76 +133,80 @@ function getMetheIngredients(obj) {
     if (!obj[`strIngredient${i}`]) {
       break;
       } else {
+      // otherwise grab the specified information
+      drinkName = obj[`strDrink`];
+      savedDrink.name = drinkName;
 
-        let drinkArr = {ingredientList: [], measurementList: []};
+      let image = obj[`strDrinkThumb`]
+      savedDrink.picture = image;
 
-        // otherwise grab the specified information
-        let ingredient = obj[`strIngredient${i}`];
-        drinkArr.ingredientList.push(ingredient);
+      let ingredient = obj[`strIngredient${i}`];
+      savedDrink.ingredientList.push(ingredient);
 
-        let measure = obj[`strMeasure${i}`];
-        drinkArr.measurementList.push(measure);
+      let measure = obj[`strMeasure${i}`];
+      savedDrink.measurementList.push(measure);
 
-        let instructions = obj[`strInstructions`];
-        drinkArr.instructionsList = instructions;
+      let instructions = obj[`strInstructions`];
+      savedDrink.instructionsList = instructions;
 
-        let image = obj[`strDrinkThumb`]
-        drinkArr.picture = image;
 
-        drinkName = obj[`strDrink`];
-        drinkArr.name = drinkName;
+      // create the li element to hold the ingredients
+      var ingredientListItemEl = document.createElement("li");
 
-        savedDrinks.push(drinkArr);
-        
-        // create the li element to hold the ingredients
-        var ingredientListItemEl = document.createElement("li");
+      // sets ingredient title text
+      ingredientTitle.textContent="Ingredients:";
+      
+      // creates a title element for the instructions
+      var instructionsTitle = document.createElement("h5");
+      instructionsTitle.textContent="Instructions:";
+      var instructionsEl = document.createElement("p");
 
-        // sets ingredient title text
-        ingredientTitle.textContent="Ingredients:";
-        
-        // creates a title element for the instructions
-        var instructionsTitle = document.createElement("h5");
-        instructionsTitle.textContent="Instructions:";
-        var instructionsEl = document.createElement("p");
+      // sets the element html to the instructions from the response
+      instructionsEl.innerHTML=instructions;
+      
+      // sets the li item to the ingredient and measurement for that ingredient
+      ingredientListItemEl.innerHTML=`${ingredient} - ${measure}`;
+      
+      // then append the ingredients list to the ul element
+      ingredientListEl.appendChild(ingredientListItemEl);
+      
+      // sets the drink name in the modal header
+      document.querySelector(".modal-title").textContent=drinkName;
 
-        // sets the element html to the instructions from the response
-        instructionsEl.innerHTML=instructions;
-        
-        // sets the li item to the ingredient and measurement for that ingredient
-        ingredientListItemEl.innerHTML=`${ingredient} - ${measure}`;
-        
-        // then append the ingredients list to the ul element
-        ingredientListEl.appendChild(ingredientListItemEl);
-        
-        // sets the drink name in the modal header
-        document.querySelector(".modal-title").textContent=drinkName;
-
-        // opens the modal manually
-        $("#drink-form-modal").modal("show")
-    }
+      // opens the modal manually
+      $("#drink-form-modal").modal("show")
+      }
   }
-  saveDrink(savedDrinks);
   document.querySelector(".modal-body").appendChild(instructionsTitle);
    //This one has to be here otherwise you get the instructions printed after each list item
   document.querySelector(".modal-body").appendChild(instructionsEl);
 };
 
-function saveDrink(obj) {
+function saveDrink() {
   
-  document.querySelector("#save-btn").addEventListener("click", function() {
-    localStorage.setItem("savedDrinks", JSON.stringify(obj));
-  })
-}
+  let storedDrinks = JSON.parse(localStorage.getItem("savedDrinks")) || [];
+
+  storedDrinks.push(savedDrink);
+  localStorage.setItem("savedDrinks", JSON.stringify(storedDrinks));
+  
+  loadDrinks();
+  
+};
+
+document.querySelector("#save-btn").addEventListener("click", saveDrink);
 
 function loadDrinks() {
-  if (localStorage !== null) {
-    let savedEl = document.createElement("a");
-    savedEl.textContent = "Here are your saved drinks!";
+  let savedEl = document.querySelector("#saved-drinks");
+
+  if (localStorage.getItem("savedDrinks") !== null) {
+    
+    savedEl.textContent = "Here are your saved drinks! It's drinking time!";
     savedEl.setAttribute("href", "./saved.html");
     document.querySelector(".meta-header").appendChild(savedEl);
+
   } else {
-    savedEl.textContent = "";
-  }
-}
+    savedEl.textContent = "You haven't saved any drinks yet! Git drinking!";
+  };
+};
 
 loadDrinks();
