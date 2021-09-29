@@ -1,5 +1,3 @@
-let savedDrink = {
-}
 // variable to grab the recipes div
 const recipesEl = document.querySelector(".recipes");
 
@@ -123,10 +121,6 @@ function getMetheIngredients(obj) {
   document.querySelector(".modal-body").appendChild(ingredientListEl);
   // append the title for the ingredients to the ul element
   ingredientListEl.appendChild(ingredientTitle);
-
-  let savedDrinks = {
-
-  }
 
   for (let i = 1; i < 20; i++) { 
     // if the value of strIngredient is null ignore it
