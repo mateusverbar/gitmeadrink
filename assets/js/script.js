@@ -8,7 +8,6 @@ function shuffle(arr) {
   return arr;
 }
 
-
 function displayDrink() {
   
   // grabs the users alcohol selection
@@ -29,12 +28,11 @@ function displayDrink() {
         return ingredientResponse.json();
       })
       .then(function(ingredientResponse) {
-  
+        
         const drinkList = ingredientResponse.drinks
 
         // shuffle drinks in the array
         let randomDrinks = shuffle(drinkList);
-  
 
 
         for (let i = 0; i < randomDrinks.length; i++) {
@@ -100,8 +98,21 @@ function displayRecipe(drinkId) {
   });
 }
 
+// let savedDrinkList = [];
+
+let savedDrink = {
+  ingredientList: [],
+  measurementList: []
+};
 
 function getMetheIngredients(obj) {
+
+  // savedDrinkList = [];
+
+  savedDrink = {
+    ingredientList: [],
+    measurementList: []
+  };
 
   var ingredientListEl = document.createElement("ul");
   var ingredientTitle = document.createElement("h5");
@@ -117,11 +128,21 @@ function getMetheIngredients(obj) {
       break;
       } else {
       // otherwise grab the specified information
-      let ingredient = obj[`strIngredient${i}`];
-      let measure = obj[`strMeasure${i}`];
-      let instructions = obj[`strInstructions`];
-      
       drinkName = obj[`strDrink`];
+      savedDrink.name = drinkName;
+
+      let image = obj[`strDrinkThumb`]
+      savedDrink.picture = image;
+
+      let ingredient = obj[`strIngredient${i}`];
+      savedDrink.ingredientList.push(ingredient);
+
+      let measure = obj[`strMeasure${i}`];
+      savedDrink.measurementList.push(measure);
+
+      let instructions = obj[`strInstructions`];
+      savedDrink.instructionsList = instructions;
+
 
       // create the li element to hold the ingredients
       var ingredientListItemEl = document.createElement("li");
@@ -150,8 +171,36 @@ function getMetheIngredients(obj) {
       $("#drink-form-modal").modal("show")
       }
   }
-
   document.querySelector(".modal-body").appendChild(instructionsTitle);
    //This one has to be here otherwise you get the instructions printed after each list item
   document.querySelector(".modal-body").appendChild(instructionsEl);
 };
+
+function saveDrink() {
+  
+  let storedDrinks = JSON.parse(localStorage.getItem("savedDrinks")) || [];
+
+  storedDrinks.push(savedDrink);
+  localStorage.setItem("savedDrinks", JSON.stringify(storedDrinks));
+  
+  loadDrinks();
+  
+};
+
+document.querySelector("#save-btn").addEventListener("click", saveDrink);
+
+function loadDrinks() {
+  let savedEl = document.querySelector("#saved-drinks");
+
+  if (localStorage.getItem("savedDrinks") !== null) {
+    
+    savedEl.textContent = "Here are your saved drinks! It's drinking time!";
+    savedEl.setAttribute("href", "./saved.html");
+    document.querySelector(".meta-header").appendChild(savedEl);
+
+  } else {
+    savedEl.textContent = "You haven't saved any drinks yet! Git drinking!";
+  };
+};
+
+loadDrinks();

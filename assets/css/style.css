@@ -30,6 +30,10 @@ h3 {
     padding: 30px;
 }
 
+#saved-drinks {
+    color: gold;
+}
+
 .alcohol-type {
     color: gold;
     background-color:maroon;
@@ -135,6 +139,22 @@ h3 {
       border: 5px solid maroon;
   }
 
+  #close-btn {
+      color: maroon;
+  }
+
+  #save-btn {
+     background-color: maroon;
+     color: gold;
+     border-radius: 25px;
+  }
+
+  #save-btn:hover {
+      background-color: gold;
+      color: maroon;
+      font-weight: bolder;
+  }
+
   /* Responsive layout - makes a one column-layout instead of a two-column layout */
 @media (max-width: 800px) {
      .flex-item {
@@ -147,4 +167,3 @@ h3 {
      flex: 100%;
    }
  }
-

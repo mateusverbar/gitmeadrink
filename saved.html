@@ -4,59 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git Me A Drink!</title>
+    
+    <title>Git Me A Drink! - Saved Drinks</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    
 </head>
 <body>
     <header class="meta-header">
-<h1 class="border-bottom border-white">
-    Git Me a Drink!
-</h1>
-<p>
-    Select your favorite alcohol spirit from the list below and get a random cocktail selection! Git yourself a drink! You deserve it!
-</p>
-<a id="saved-drinks"></a>
+        <h1 class="border-bottom border-white">Git Your Saved Drinks</h1>
     </header>
- <main> 
-     <div>
-        <form class="alcohol-type">
-            <label><h2>Select the type of alcohol you have available!</h2></label>
-            <select onchange=displayDrink() class="ms-3" id="alcohol-type">
-                <option hidden disabled selected value>What's Your Favorite?</option>
-                <option value="Vodka">
-                    Vodka
-                </option>
-                <option value="Scotch">
-                    Scotch
-                </option>
-                <option value="Gin">
-                    Gin
-                </option>
-                <option value="Rum">
-                    Rum
-                </option>
-                <option value="Tequila">
-                    Tequila
-                </option>
-                <option value="Bourbon">
-                    Bourbon
-                </option>
-            </select>
-        </form>
-     </div>
-     <div class="drink-list">
 
-        <h3 class="list-header">Try These Recipes with: <span id="recipe-name"></span></h3>
-        
-        <div class="recipes flex-container"> <!--20 flex item divs go here dynamically-->
-
+    <main>
+        <div class="drink-list">
+            <div class="drinks flex-container">
+                
+            </div>
         </div>
-    </div>
- </main>
-    
+    </main>
     <!--This is where we're building our modal-->
     <div class="modal fade" id="drink-form-modal" tabindex="-1" role="dialog" aria-labelledby="drink-form-modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -70,15 +36,11 @@
                 <div class="modal-body" id="drink-content">
                  
                 </div>
-                <button type="button" class="btn" id="save-btn"><span class="oi oi-heart"></span>Save this Drink!</button>
             </div>
         </div>
     </div>
-
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-    
+    <script src ="assets/js/saved.js"></script>
 </body>
 </html>
